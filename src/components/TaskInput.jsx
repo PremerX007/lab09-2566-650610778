@@ -5,8 +5,11 @@ export const TaskInput = ({ addTaskFunc }) => {
   const [taskInput, setTaskInput] = useState("");
 
   const addTaskBtnOnClick = () => {
-    addTaskFunc(taskInput);
-    setTaskInput("");
+    // [BUG fixed] Button "Add" operate add task when taskInput is empty.
+    if (taskInput !== "") {
+      addTaskFunc(taskInput);
+      setTaskInput("");
+    }
   };
 
   const taskInputOnChange = (event) => {
